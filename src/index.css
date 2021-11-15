@@ -1,13 +1,113 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*====================== HEADER ======================*/
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background: #0085FF;
 }
+
+.header-menu {
+  display: flex;
+  width: 90%;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  background: #EA028C;
+}
+
+.header-menu__logo {
+  width: 300px;
+  margin-top: 10px;
+}
+
+.header-menu-list {
+  display: flex;
+  gap: 10px;
+}
+
+.header-menu-list a {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.header-menu-list a:hover {
+  color: #EA028C;
+  background: #fff;
+  transition: all .5s;
+}
+
+.header-menu-social a {
+  color: #fff;
+  padding: 0 10px;
+}
+
+.header-menu-social a:hover {
+  color: #282c34;
+  transition: all .5s;
+}
+
+/*====================== CAROUSEL ======================*/
+.carousel-container {
+  position: relative;
+  height: 600px; 
+}
+
+.carousel__sky {
+  background: -webkit-linear-gradient(bottom, #2cc3ff, #0085FF);
+  height: 100%;
+}
+
+.carousel-root {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 100px;
+}
+
+.carousel-item__image {
+  width: 700px !important;
+}
+
+.carousel-item__description {
+  font-size: 3em;
+  width: 500px;
+  text-align: right;
+}
+
+.vector {
+  position: absolute;
+  width: 100%;
+  top: 10px;
+}
+
