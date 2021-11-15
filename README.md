@@ -1,4 +1,4 @@
-# LosManantialesDelSurMovil
+# LosManantialesDelSurWeb
 Proyecto Aplicación Web con React.js para curso de Sistemas Distribuidos Ingeniería de Sistemas serie 300 UNSCH
 
 ## Integrantes:
