@@ -2,6 +2,7 @@
   "name": "losmanantialesdelsurweb",
   "version": "0.1.0",
   "private": true,
+  "description": "Proyecto Aplicación Web con React.js para curso de Sistemas Distribuidos Ingeniería de Sistemas serie 300 UNSCH",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
