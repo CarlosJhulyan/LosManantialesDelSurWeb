@@ -1,0 +1,437 @@
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Vector 6 */
+
+.vector6{
+position: absolute;
+width: 1696px;
+height: 883px;
+left: -84px;
+top: 275px;
+}
+
+
+/* image 7 */
+
+.img7{
+position: absolute;
+width: 594px;
+height: 380px;
+left: 721px;
+top: 1312px;
+
+background: url(.png);
+}
+
+/* Contactanos */
+
+.contactanos{
+position: absolute;
+width: 582px;
+height: 75px;
+left: 150px;
+top: 1321px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 50px;
+line-height: 75px;
+}
+
+/* logo-instagram */
+
+.logo{
+position: absolute;
+width: 20px;
+height: 20px;
+left: calc(50% - 20px/2 + 440px);
+top: calc(50% - 20px/2 - 2592.5px);
+}
+
+
+
+
+/* A nuestra operadora de servicio o ubicanos en las redes sociales para más información con gusto le atenderemos. */
+
+.texto{
+position: absolute;
+width: 487px;
+height: 180px;
+left: 150px;
+top: 1412px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 45px;
+
+color: #0C0B0B;
+}
+
+
+/* imagen 3 */
+.imagen3{
+position: absolute;
+width: 492px;
+height: 492px;
+left: 151px;
+top: 1921px;
+
+background: url(.png);
+border-radius: 300px;
+}
+
+/* Somos una empresa con muchos años en el transporte y envio, trabajabamos de manera tradicional, actualmente innovamos para mejorar nuestros servicios para ustedes. */
+
+.textoEmpresa{
+position: absolute;
+width: 556px;
+height: 144px;
+left: 757px;
+top: 2159px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 36px;
+text-align: right;
+
+color: #040122;
+
+}
+/* Sobre nosotros */
+
+.sobreNosotros{
+position: absolute;
+width: 582px;
+height: 75px;
+left: 733px;
+top: 2068px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 50px;
+line-height: 75px;
+/* identical to box height */
+
+text-align: right;
+color: #EA028C;
+
+}
+
+
+/* Vector 5 */
+.vector5{
+position: absolute;
+width: 1883px;
+height: 644px;
+left: 1661px;
+top: 1899px;
+
+background: linear-gradient(180deg, #0296EA 23.96%, #0087BD 42.19%, #045B7E 79.69%);
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+
+
+
+
+
+
+/* NUESTRAS AGENCIAS */
+
+.nuestrasAgencias{
+position: absolute;
+width: 510px;
+height: 72px;
+left: 463.29px;
+top: 2747px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+color: #EA028C;
+}
+
+
+/* Frame 22 */
+
+/* Auto Layout */
+.layaout{
+  display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1246.29px;
+height: 525px;
+left: 95px;
+top: 2857px;
+}
+
+
+/* sede1 */
+.sede1{
+position: static;
+width: 601.59px;
+height: 517px;
+left: 0px;
+top: 0px;
+}
+
+/* Inside Auto Layout */
+.insideLayaut{
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 57px;
+}
+/* Auto Layout */
+.autoLayaut{
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1246.29px;
+height: 525px;
+left: 95px;
+top: 2857px;
+}
+
+/* imagen 1 */
+.imagen1{
+position: absolute;
+width: 599.03px;
+height: 400px;
+left: 2.56px;
+top: 0px;
+
+background: url(.png);
+}
+
+/* Group 1 */
+.group1{
+position: absolute;
+width: 227px;
+height: 400px;
+left: 2.56px;
+top: 0px;
+
+}
+
+/* Rectangle 9 */
+.rectangulo9{
+position: absolute;
+width: 227px;
+height: 400px;
+left: 2.56px;
+top: 0px;
+
+background: #EA028C;
+}
+
+/* Line 3 */
+.rectangulo9 .line3{
+position: absolute;
+width: 78px;
+height: 0px;
+left: 39.06px;
+top: 169.5px;
+
+border: 5px solid #EA028C;
+transform: rotate(90deg);
+}
+
+
+
+/* sede */
+.rectangulo9 .textSede{
+position: absolute;
+width: 59px;
+height: 36px;
+left: 54.56px;
+top: 174px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+color: #F4FDFC;
+}
+
+/* PUQUIO */
+.rectangulo9 .textPuquio{
+position: absolute;
+width: 94px;
+height: 36px;
+left: 54.56px;
+top: 203px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+color: #F4FDFC;
+}
+
+/* Sede Puquio Horario de atención de lunes a viernes: 8am-10pm Dirección: Jr. Manankanchu */
+.textoSedePuquio{
+position: absolute;
+width: 601px;
+height: 81px;
+left: 0px;
+top: 436px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 27px;
+
+color: #EA028C;
+
+}
+
+/* sede 2 */
+.sede2{
+position: static;
+width: 587.7px;
+height: 525px;
+left: 658.59px;
+top: 0px;
+}
+
+/* Inside Auto Layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 0px 57px;
+
+
+/* imagen 2 */
+
+position: absolute;
+width: 587.38px;
+height: 400px;
+left: 658.91px;
+top: 0px;
+
+background: url(.png);
+
+
+/* Group 2 */
+
+position: absolute;
+width: 227px;
+height: 400px;
+left: 658.91px;
+top: 0px;
+
+
+
+/* Rectangle 9 */
+
+position: absolute;
+width: 227px;
+height: 400px;
+left: 658.91px;
+top: 0px;
+
+background: #EA028C;
+
+
+/* Line 3 */
+
+position: absolute;
+width: 78px;
+height: 0px;
+left: 695.41px;
+top: 169.5px;
+
+border: 5px solid #EA028C;
+transform: rotate(90deg);
+
+
+/* sede */
+
+position: absolute;
+width: 59px;
+height: 36px;
+left: 710.91px;
+top: 174px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+color: #F4FDFC;
+
+
+
+/* HUANTA */
+
+position: absolute;
+width: 103px;
+height: 36px;
+left: 710.91px;
+top: 203px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+
+color: #F4FDFC;
+
+
+
+/* Sede Huanta Horario de atención de lunes a viernes: 8am-10pm Direccion: R. Las palmas */
+
+position: absolute;
+width: 465px;
+height: 81px;
+left: 658.59px;
+top: 444px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 27px;
+
+color: #EA028C;
+
+
+
+
+
+
+
+
+
+
