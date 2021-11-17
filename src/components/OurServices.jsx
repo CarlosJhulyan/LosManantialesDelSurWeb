@@ -1,25 +1,11 @@
-
 import React from "react";
 
-const Access = () => {
+const OurServices = () => {
 	return (
 		<div>
-            componente nuestros servicios 
-        </div>
+			componente nuestros servicios
+		</div>
 	)
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default OurServices;
