@@ -259,3 +259,13 @@ body {
 .card-agencie:hover .card-agencie__title {
   transform: scale(1.05, 1.05);
 }
+
+/*====================== ACCESS ======================*/
+.estilo{
+  color:#EA028C;
+  width: 200px;
+  height: 300px;
+  margin-left: auto;
+  margin-left: auto;
+  background-color: aqua;
+}

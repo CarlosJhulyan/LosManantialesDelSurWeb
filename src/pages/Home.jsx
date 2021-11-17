@@ -5,6 +5,7 @@ import Carousel from "../components/Carousel";
 import Contact from "../components/Contact";
 import AboutUs from "../components/AboutUs";
 import OurAgencies from "../components/OurAgencies";
+import Access from "../components/Access";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
         <Contact />
         <AboutUs />
         <OurAgencies />
+        <Access></Access>
       </div>
     )
 }
