@@ -7,16 +7,14 @@ import AboutUs from "../components/AboutUs";
 import OurAgencies from "../components/OurAgencies";
 import OurServices from "../components/OurServices";
 import Access from "../components/Access";
-import Access from "../components/TypeServices";
-import Access from "../components/Dashboard";
-import Access from "../components/PckageTracking";
-import Access from "../components/Registration";
-import Access from "../components/Passage";
-import Access from "../components/UpdateCliente";
-import Access from "../components/RegistrationPayment";
-import Access from "../components/RegistrationPackage";
-
-
+import Access from "../pages/Dashboard";
+import Access from "../pages/PackageTracking";
+import Access from "../pages/Passage";
+import Access from "../pages/Registration";
+import Access from "../pages/RegistrationPackage";
+import Access from "../pages/RegistrationPayment";
+import Access from "../pages/TypeServices";
+import Access from "../pages/UpdateCliente";
 
 
 const Home = () => {
