@@ -7,8 +7,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,11 +28,11 @@ body {
   cursor: pointer;
   border: none;
   box-shadow: 0 2px 5px #333;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .btn--pink {
-  background: #EA028C;
+  background: #ea028c;
   color: #fff;
 }
 
@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  background: #0085FF;
+  background: #0085ff;
 }
 
 .header-menu {
@@ -56,7 +56,7 @@ body {
   height: 60px;
   justify-content: space-between;
   align-items: center;
-  background: #EA028C;
+  background: #ea028c;
 }
 
 .header-menu__logo {
@@ -79,9 +79,9 @@ body {
 }
 
 .header-menu-list a:hover {
-  color: #EA028C;
+  color: #ea028c;
   background: #fff;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .header-menu-social a {
@@ -91,17 +91,17 @@ body {
 
 .header-menu-social a:hover {
   color: #282c34;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 /*====================== CAROUSEL ======================*/
 .carousel-container {
   position: relative;
-  height: 600px; 
+  height: 600px;
 }
 
 .carousel__sky {
-  background: -webkit-linear-gradient(bottom, #ffffff, #0085FF);
+  background: -webkit-linear-gradient(bottom, #ffffff, #0085ff);
   height: 100%;
 }
 
@@ -157,7 +157,7 @@ body {
 }
 
 .contact-text h2 {
-  color: #EA028C;
+  color: #ea028c;
   font-size: 2.5em;
   margin-bottom: 20px;
 }
@@ -191,7 +191,7 @@ body {
 }
 
 .about-container-text h2 {
-  color: #EA028C;
+  color: #ea028c;
   margin-bottom: 20px;
   font-size: 2.5em;
 }
@@ -203,13 +203,13 @@ body {
   margin-bottom: 100px;
 }
 .our-agencies h2 {
-  color: #EA028C;
+  color: #ea028c;
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 40px;
 }
 
-.cards-agencie { 
+.cards-agencie {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
@@ -221,17 +221,17 @@ body {
 
 .card-agencie h4 {
   font-size: 1.3em;
-  color: #EA028C;
+  color: #ea028c;
   margin-top: 10px;
 }
 
 .card-agencie > p {
-  color: #EA028C;
+  color: #ea028c;
 }
 
 .card-agencie__title {
   position: relative;
-  transition: all .5s;
+  transition: all 0.5s;
   height: 250px;
 }
 
@@ -243,7 +243,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: #EA028C;
+  background: #ea028c;
   color: #fff;
   height: 100%;
   width: 30%;
@@ -259,3 +259,71 @@ body {
 .card-agencie:hover .card-agencie__title {
   transform: scale(1.05, 1.05);
 }
+
+/*====================== Type of services  ======================*/
+
+.typeServices {
+  background-color: greenyellow;
+  width: 100%;
+  height: 50%;
+}
+
+/*====================== dashboard  ======================*/
+
+.dashboard {
+  background-color: #ea028c;
+  text-decoration: none;
+  width: auto;
+}
+/*====================== package tracking  ======================*/
+
+.packageTracking {
+  font-size: medium;
+  background-color: #ea028c;
+  text-decoration: none;
+  width: auto;
+}
+
+/*====================== Registration  ======================*/
+.registration {
+  background-color: yellow;
+  font-size: 45px;
+}
+
+/*====================== package passage======================*/
+.passage {
+  font-family: "Courier New", Courier, monospace;
+  background: blue;
+  text-decoration: none;
+  text-overflow: clip;
+}
+
+/*====================== package update client ======================*/
+.updateClien {
+  background: #ea028c;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/*====================== Registration payment   ======================*/
+
+.registrationPayment {
+  background: coral;
+  font-size: x-small;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+/*====================== registration Package  ======================*/
+
+.regsitrationPackage{
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: orangered;
+  overflow: hidden;
+  
+}
+
+
+
+
+
