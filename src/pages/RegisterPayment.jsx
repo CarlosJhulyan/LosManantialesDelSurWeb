@@ -1,12 +1,12 @@
 import React from "react";
 import DashboardClient from "../Layout/DashboardClient";
 
-const UpdateCliente = () => {
-  return(
+const RegisterPayment = () => {
+  return (
     <DashboardClient>
-      Upate cliente 
+      registro payment
     </DashboardClient>
   )
 }
 
-export default UpdateCliente;
+export default RegisterPayment;

@@ -1,14 +1,13 @@
-import react from "react";
-const Dashboard =()=>{
-    return (
-        <div>
-            dashboard 
-        </div>
-    )
+import React from "react";
+
+import DashboardClient from "../Layout/DashboardClient";
+
+const Dashboard = () => {
+  return (
+    <DashboardClient>
+      Dashboard Cliente
+    </DashboardClient>
+  )
 }
+
 export default Dashboard;
-
-
-
-
-

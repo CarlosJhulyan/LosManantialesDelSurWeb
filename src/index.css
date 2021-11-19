@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  background: #0085ff;
+  background: #5186C7;
 }
 
 .header-menu {
@@ -56,7 +56,7 @@ body {
   height: 60px;
   justify-content: space-between;
   align-items: center;
-  background: #ea028c;
+  background: #D74899;
 }
 
 .header-menu__logo {
@@ -79,8 +79,8 @@ body {
 }
 
 .header-menu-list a:hover {
-  color: #ea028c;
-  background: #fff;
+  color: #D74899;
+  background: #F0B9D8;
   transition: all 0.5s;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .header-menu-social a:hover {
-  color: #282c34;
+  color: #F0B9D8;
   transition: all 0.5s;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .carousel__sky {
-  background: -webkit-linear-gradient(bottom, #ffffff, #0085ff);
+  background: -webkit-linear-gradient(bottom, #ffffff, #5186C7);
   height: 100%;
 }
 
@@ -157,7 +157,7 @@ body {
 }
 
 .contact-text h2 {
-  color: #ea028c;
+  color: #D74899;
   font-size: 2.5em;
   margin-bottom: 20px;
 }
@@ -191,7 +191,7 @@ body {
 }
 
 .about-container-text h2 {
-  color: #ea028c;
+  color: #D74899;
   margin-bottom: 20px;
   font-size: 2.5em;
 }
@@ -203,7 +203,7 @@ body {
   margin-bottom: 100px;
 }
 .our-agencies h2 {
-  color: #ea028c;
+  color: #D74899;
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 40px;
@@ -221,12 +221,12 @@ body {
 
 .card-agencie h4 {
   font-size: 1.3em;
-  color: #ea028c;
+  color: #D74899;
   margin-top: 10px;
 }
 
 .card-agencie > p {
-  color: #ea028c;
+  color: #D74899;
 }
 
 .card-agencie__title {
@@ -243,7 +243,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: #ea028c;
+  background: #D74899;
   color: #fff;
   height: 100%;
   width: 30%;
@@ -260,70 +260,57 @@ body {
   transform: scale(1.05, 1.05);
 }
 
-/*====================== Type of services  ======================*/
 
-.typeServices {
-  background-color: greenyellow;
+/*====================== DASHBOARD CLIENT  ======================*/
+
+.dashboard-client {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
-  height: 50%;
+  height: 100vh;
+  background: #676E80;
 }
 
-/*====================== dashboard  ======================*/
-
-.dashboard {
-  background-color: #ea028c;
-  text-decoration: none;
-  width: auto;
-}
-/*====================== package tracking  ======================*/
-
-.packageTracking {
-  font-size: medium;
-  background-color: #ea028c;
-  text-decoration: none;
-  width: auto;
+.dashboard-client-window {
+  width: 1200px;
+  height: 80vh;
+  background: #D2DAEF;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/*====================== Registration  ======================*/
-.registration {
-  background-color: yellow;
-  font-size: 45px;
+.header-client {
+  display: grid;
+  width: 100%;
+  height: 15vh;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 10px 20px;
 }
 
-/*====================== package passage======================*/
-.passage {
-  font-family: "Courier New", Courier, monospace;
-  background: blue;
-  text-decoration: none;
-  text-overflow: clip;
+.header-client__user {
+  font-size: 1.5em;
+  color: #fff;
 }
 
-/*====================== package update client ======================*/
-.updateClien {
-  background: #ea028c;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+.header-client__user i {
+  margin-right: 10px;
 }
 
-/*====================== Registration payment   ======================*/
-
-.registrationPayment {
-  background: coral;
-  font-size: x-small;
-  text-decoration: none;
-  text-transform: lowercase;
+.header-client__logo {
+  width: 150px;
+  margin: 0 auto;
 }
 
-/*====================== registration Package  ======================*/
-
-.registrationPackage{
-
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background: orangered;
-  overflow: hidden;
-  
+.header-client__setting {
+  font-size: 2em;
+  text-align: right;
+  color: #fff;
 }
 
-
-
-
+.header-client__setting i { transition: all .5s; }
+.header-client__setting i:hover { transform: rotateZ(90deg); }
 

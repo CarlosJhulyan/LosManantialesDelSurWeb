@@ -1,15 +1,12 @@
-import react from "react";
-const Passage =()=>{
-    return (
-        <div>
-           Passage
-        </div>
-    )
+import React from "react";
+import DashboardClient from "../Layout/DashboardClient";
+
+const Passage = () => {
+  return (
+    <DashboardClient>
+      Passage
+    </DashboardClient>
+  )
 }
 
-export  default Passage
-
-
-
-
-
+export default Passage;

@@ -1,13 +1,16 @@
 import React from "react";
-const TypeServices =()=>{
-    return(
-        <div>
-            tipo de servicio
-        </div>
-    )
-}
-export default TypeServices 
 
+import DashboardClient from "../Layout/DashboardClient";
+
+const TypeServices = () => {
+  return(
+    <DashboardClient>
+      Type services 
+    </DashboardClient>
+  )
+}
+
+export default TypeServices;
 
 
 
