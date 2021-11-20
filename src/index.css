@@ -259,3 +259,147 @@ body {
 .card-agencie:hover .card-agencie__title {
   transform: scale(1.05, 1.05);
 }
+
+/*====================== ACCESS ======================*/
+#cuadro1{
+	/*background-color: #0087BD;*/
+ background-color: #225178;
+ color: #EA028C;
+ font-size: 26px;
+ display: flex;
+ text-align: center;
+ 
+}
+
+#subcuadro>h3{
+	margin-bottom: 8px;
+}
+
+#subcuadro{
+	margin-left: auto;
+ margin-right: auto;
+ margin-top:auto;
+ margin-bottom: auto;
+}
+
+.borde-image{
+	margin-right: auto;
+
+}
+
+.boton{
+	width: 220px;
+	height: 42px;
+	color:#EA028C;
+	background-color: #fff;
+	border-radius: 30px;
+	border-color: #fff;
+	font-size: 18px;
+}
+
+.borde-image img{
+	border-radius: 50%;
+}
+
+/*====================== OURSERVICES ======================*/
+
+#nuestros-servicios>h2{
+	color: #EA028C
+}
+
+.D103_container {
+    max-width: 1013px;
+    margin: 0 auto;
+    padding: 49px;
+}
+
+.D103_h2 {
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #323232;
+    text-align: center;
+}
+
+.D103_p {
+    font-size: 18px;
+    line-height: 1.67;
+    color: #2d2c2c;
+    max-width: 798px;
+    margin: 0 auto;
+    letter-spacing: normal;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+/*====================== FOOTER ======================*/
+
+.pie-pagina{
+            width: 100%;
+            background-color:#0a141d;
+}
+
+.pie-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+
+.pie-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 76%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.pie-pagina .grupo-1 .box figure img{
+    width:250px;
+}
+.pie-pagina .grupo-1 .box h2{
+    color:#fff;
+    margin-bottom: 25px;
+    font-size:25px;
+}
+
+.pie-pagina .grupo-1 .box p{
+    color:#efefef;
+    margin-bottom: 10px;
+
+}
+.pie-pagina .grupo-1 .red-social{
+    display: inline-block;
+    text-decoration: none;
+    width:45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-pagina .grupo-2 {
+    background-color: #0a1a2a;
+    padding: 15px 10px;
+    text-align: center;
+    color:#fff;
+}
+
+.pie-pagina .grupo-2 small{
+    font-size: 15px;
+}
+

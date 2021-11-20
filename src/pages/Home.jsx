@@ -7,6 +7,7 @@ import AboutUs from "../components/AboutUs";
 import OurAgencies from "../components/OurAgencies";
 import OurServices from "../components/OurServices";
 import Access from "../components/Access";
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
         <OurAgencies />
         <OurServices />
         <Access />
+        <Footer />
       </div>
     )
 }
