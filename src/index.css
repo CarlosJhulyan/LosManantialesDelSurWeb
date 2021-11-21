@@ -151,8 +151,8 @@ img {
 /*====================== CONTACT ======================*/
 
 .contact {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 500px;
   margin-bottom: 100px;
 }
@@ -185,9 +185,9 @@ img {
 }
 
 .about-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   text-align: right;
 }
 
@@ -218,6 +218,7 @@ img {
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 40px;
+  font-weight: bold;
 }
 
 .cards-agencie {
@@ -271,6 +272,106 @@ img {
   transform: scale(1.05, 1.05);
 }
 
+/*====================== ACCESS ======================*/
+.access {
+  position: relative;
+  color: #EA028C;
+}
+
+.access__background {
+  position: absolute;
+}
+
+.access-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.access-container__title {
+  font-weight: bold;
+  color: #D74899;
+  font-size: 3em;
+}
+
+/*====================== OURSERVICES ======================*/
+
+.our-services {
+	margin-top: 400px;
+}
+
+.our-services h2 {
+  color: #D74899;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.our-services__item {
+    max-width: 1013px;
+    margin: 30px auto;
+    padding: 30px 20px;
+    background: #eee;
+}
+
+.our-services__item h4 {
+    font-weight: bold;
+    color: #323232;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.our-services__item p {
+    color: #2d2c2c;
+    text-align: justify;
+    font-size: 1.3em;
+}
+
+
+/*====================== FOOTER ======================*/
+
+.footer {
+  width: 100%;
+  background-color:#0a141d;
+  text-align: center;
+}
+
+.footer .footer-1 {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  padding: 45px 0;
+}
+
+.box h2 {
+  color: #D74899;
+  margin-bottom: 25px;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.box p { color:#efefef; }
+
+.footer-2 {
+  background-color: #0a1a2a;
+  padding: 20px 10px;
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.social a {
+  display: block;
+  font-size: 2.5em;
+  color: #fff;
+  transition: all .5s;
+}
+
+.social a:hover {
+  color: #EA028C;
+}
 
 /*====================== DASHBOARD CLIENT  ======================*/
 
@@ -357,4 +458,3 @@ img {
   object-fit: cover;
   transform: scale(1.05, 1.05);
 }
-
