@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Context } from "../Context";
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Context } from "../context";
 
 import Home from '../pages/Home';
 import Dashboard from '../pages/Dashboard';
@@ -17,19 +17,29 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<TypeServices />} path="/servicio" />
-        <Route element={<Dashboard />} path="/cliente" />
-        <Route element={<RegisterPayment />} path="/cliente/registro-pago" />
-        <Route element={<RegisterPackage />} path="/cliente/registro-paquete" />
-        <Route element={<Register />} path="/cliente/registro" />
-        <Route element={<PackageTracking />} path="/cliente/seguimiento-paquete" /> 
+      <Switch>
+        <Route exact component={Home} path="/" />
         {
-          isAuth && <Route element={<UpdateCliente />} path="/cliente/actualizar-datos" />
+          isAuth ? (
+            <>
+              <Route exact component={Dashboard} path="/cliente" />
+              <Route component={RegisterPayment} path="/cliente/registro-pago" />
+              <Route component={Passage} path="/cliente/compra-pasaje" />
+              <Route component={RegisterPackage} path="/cliente/registro-paquete" />
+              <Route component={UpdateCliente} path="/cliente/actualizar-datos" />
+              <Route component={PackageTracking} path="/cliente/seguimiento-paquete" />
+              <Redirect from="/servicio" to="/cliente" />
+            </>
+          ) : (
+            <>
+              <Route component={Register} path="/cliente/registro" />
+              <Route component={TypeServices} path="/servicio" />
+              <Redirect from="/cliente" to="/servicio" />
+            </>
+          )
         }
-        <Route element={<Passage />} path="/cliente/compra-pasaje" />
-      </Routes>
+        <Redirect to="/" from="*" />
+      </Switch>
     </BrowserRouter>
   );
 }

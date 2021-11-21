@@ -4,8 +4,8 @@ import DashboardClient from "../Layout/DashboardClient";
 
 const Dashboard = () => {
   return (
-    <DashboardClient>
-      Dashboard Cliente
+    <DashboardClient title="Dashboard">
+      dashboard
     </DashboardClient>
   )
 }

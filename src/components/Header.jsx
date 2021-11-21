@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from '../logotipo.svg';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
           <li><a href="#">Agencias</a></li>
           <li><a href="#">Contactanos</a></li>
           <li><a href="#">Nuestros Servicios</a></li>
-          <li><a href="#">PARA CLIENTES</a></li>
+          <li><Link to="/cliente">PARA CLIENTES</Link></li>
         </ul>
         <div className="header-menu-social">
           <a href="https://www.facebook.com/ETM-Manantiales-DEL-SUR-2619080004773359/" target="_blank"><i className="fa fa-facebook" /></a>

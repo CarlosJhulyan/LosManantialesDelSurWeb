@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './routes/App';
-import Context from './Context';
+import Context from './context';
+
+import './index.css';
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <Context.Provider>

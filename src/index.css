@@ -7,13 +7,15 @@
 }
 
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Poppins', "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background: #eee;
+} 
+
+img {
+  width: 100%;
 }
 
 .container {
@@ -32,7 +34,7 @@ body {
 }
 
 .btn--pink {
-  background: #ea028c;
+  background: #D74899;
   color: #fff;
 }
 
@@ -40,6 +42,13 @@ body {
   filter: brightness(120%);
 }
 
+.ant-btn {
+  border-radius: 10px !important;
+}
+
+.ant-input {
+  border-radius: 10px !important;
+}
 /*====================== HEADER ======================*/
 
 .header {
@@ -67,6 +76,7 @@ body {
 .header-menu-list {
   display: flex;
   gap: 10px;
+  margin: 0;
 }
 
 .header-menu-list a {
@@ -75,6 +85,7 @@ body {
   height: 60px;
   color: white;
   padding: 10px;
+  margin: 0 !important;
   font-weight: bold;
 }
 
@@ -226,7 +237,7 @@ body {
 }
 
 .card-agencie > p {
-  color: #D74899;
+  color: #676E80;
 }
 
 .card-agencie__title {
@@ -244,7 +255,7 @@ body {
   top: 0;
   left: 0;
   background: #D74899;
-  color: #fff;
+  color: #F0B9D8;
   height: 100%;
   width: 30%;
   transform: scale(1.02, 1.02);
@@ -274,21 +285,34 @@ body {
 }
 
 .dashboard-client-window {
-  width: 1200px;
-  height: 80vh;
+  width: 700px;
+  height: 75vh;
   background: #D2DAEF;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25);
   padding: 20px;
   border-radius: 10px;
 }
 
+.dashboard-client-window > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-client-window__title {
+  font-size: 2.5em;
+  text-align: center;
+  margin: 0;
+}
+
 .header-client {
   display: grid;
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   padding: 10px 20px;
+  margin-bottom: 20px;
 }
 
 .header-client__user {
@@ -313,4 +337,24 @@ body {
 
 .header-client__setting i { transition: all .5s; }
 .header-client__setting i:hover { transform: rotateZ(90deg); }
+
+.footer-client {
+  width: 100%;
+  padding: 0 20px;
+  color: #fff;
+  font-size: 2em;
+}
+
+.type-service__image {
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all .3s;
+}
+
+.type-service__image:hover {
+  height: 170px;
+  object-fit: cover;
+  transform: scale(1.05, 1.05);
+}
 

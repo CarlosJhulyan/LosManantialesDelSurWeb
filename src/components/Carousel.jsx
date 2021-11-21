@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import Vector1 from '../images/vector1.svg';
 import Carousel1 from '../images/carousel1.png';
-import Carousel2 from '../images/carousel2.jpg';
+import Carousel2 from '../images/carousel2.png';
 import Carousel3 from '../images/carousel3.png';
 
 const Carousel = () => {
