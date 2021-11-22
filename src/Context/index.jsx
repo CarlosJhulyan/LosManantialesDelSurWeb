@@ -11,14 +11,14 @@ const Provider = ({ children }) => {
     isAuth,
     signIn: () => {
       console.log('Entrar');
-    }, 
+    },
     signUp: token => {
       window.sessionStorage.setItem('token', token);
-      setIsAuth(true);
+      setIsAuth(window.sessionStorage.getItem('token') ? true : false);
     },
     signOut: () => {
-      setIsAuth(false);
       window.sessionStorage.removeItem('token');
+      setIsAuth(window.sessionStorage.getItem('token') ? true : false);
     }
   }
 

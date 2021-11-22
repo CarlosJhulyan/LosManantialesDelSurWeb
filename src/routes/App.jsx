@@ -28,13 +28,11 @@ function App() {
               <Route component={RegisterPackage} path="/cliente/registro-paquete" />
               <Route component={UpdateCliente} path="/cliente/actualizar-datos" />
               <Route component={PackageTracking} path="/cliente/seguimiento-paquete" />
-              <Redirect from="/servicio" to="/cliente" />
             </>
           ) : (
             <>
               <Route component={Register} path="/cliente/registro" />
               <Route component={TypeServices} path="/servicio" />
-              <Redirect from="/cliente" to="/servicio" />
             </>
           )
         }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Row, Col, Form } from "antd";
+import { Button, Row, Form } from "antd";
 
 import DashboardClient from "../Layout/DashboardClient";
 

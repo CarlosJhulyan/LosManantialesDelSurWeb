@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import DashboardClient from "../Layout/DashboardClient";
 import { Context } from "../context";
+import { registerClient, signUpClient } from '../services/AuthServices';
 
 const Register = ({ history }) => {
   const servicio = new URLSearchParams(history.location.search).get('servicio');
@@ -14,7 +15,7 @@ const Register = ({ history }) => {
   const [ data, setData ] = useState({
     user: {
       nombres: '',
-      telefono: '',
+      celular: '',
       dni: '',
       correo: ''
     },
@@ -31,18 +32,18 @@ const Register = ({ history }) => {
   }
 
   const handleSubmit = () => {
-    setData({
-      ...data,
-      loading: true
-    });
-    setTimeout(() => {
-      setData({
-        ...data,
-        loading: false
+    setData({ ...data, loading: true });
+    registerClient(data.user)
+      .then(client => {
+        if (client) {
+          signUpClient(data.user.correo, data.user.dni).then(token => {
+            if (token) {
+              signUp(token.token);
+              setData({ ...data, loading: false });
+            }
+          });
+        }
       });
-      history.push(`/cliente/${servicio}`);
-      signUp('token');
-    }, 3000);
   }
 
   return (
@@ -67,10 +68,10 @@ const Register = ({ history }) => {
             </Form.Item>
           </Col>
           <Col span={11}>
-            <Form.Item label="Telefono" required>
+            <Form.Item label="Celular" required>
               <Input size="large" 
-                      value={data.user.telefono} 
-                      name="telefono" 
+                      value={data.user.celular} 
+                      name="celular" 
                       onChange={handleChange} />
             </Form.Item>
             <Form.Item label="Correo electronico">
