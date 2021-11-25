@@ -7,7 +7,7 @@ import Pauza from '../images/pauza.jpg';
 
 const OurAgencies = () => {
   return (
-    <section className="container our-agencies">
+    <section className="container our-agencies" id="our-agencies">
       <h2>Nuestras Agencias</h2>
       <div className="cards-agencie">
         <div className="card-agencie">

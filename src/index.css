@@ -1,3 +1,23 @@
+/*
+
+INDEX:
+
+1. GLOBAL
+2. CUSTOMIZER
+3. HEADER
+4. CAROUSEL
+5. CONTACT
+6. ABOUT US
+7. OUR AGENCIES
+8. ACCESS
+9. OUR SERVICES
+10. FOOTER
+
+11. DASHBOARD CLIENT
+12. PAYMENT REGISTER
+
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -41,6 +61,8 @@ img {
 .btn:hover {
   filter: brightness(120%);
 }
+
+/*====================== CUSTOMIZER ======================*/
 
 .ant-btn {
   border-radius: 10px !important;
@@ -373,7 +395,7 @@ img {
   color: #EA028C;
 }
 
-/*====================== DASHBOARD CLIENT  ======================*/
+/*====================== DASHBOARD CLIENT ======================*/
 
 .dashboard-client {
   display: flex;
@@ -457,4 +479,77 @@ img {
   height: 170px;
   object-fit: cover;
   transform: scale(1.05, 1.05);
+}
+
+/*====================== PAYMENT REGISTER ======================*/
+.payment-methods {
+  width: 80%;
+  display: flex;
+  gap: 20px;
+  margin: 5px auto;
+  justify-content: center;
+}
+.payment-methods__images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.payment-methods__images img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.payment-methods__numbers p {
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+/*====================== PASSAGE ======================*/
+
+.container-vans {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.van-car {
+  position: relative;
+  height: 140px;
+}
+
+.van-car__seat {
+  position: relative;
+  padding: 15px 0;
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
+.van-car__seat i {
+  margin: 0 10px;
+  text-shadow: 0 0 10px #000;
+  cursor: pointer;
+}
+
+.van-car__seat i:hover {
+  filter: brightness(150%);
+}
+
+.van-car__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  filter: grayscale(50%);
+}
+
+.van__schedule {
+  background: #5186C7;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  padding: 2px 0;
+  margin-bottom: 5px;
 }

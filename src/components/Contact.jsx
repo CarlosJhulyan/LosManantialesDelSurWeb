@@ -4,7 +4,7 @@ import Image from '../images/contactenos.png';
 
 const Contact = () => {
   return (
-    <section className="container contact">
+    <section className="container contact" id="contact">
       <div className="contact-text">
         <h2>Contactanos</h2>
         <p>A nuestra operadora de servicio o ubicanos en nuestras redes sociales para más información con gusto le atendemos</p>

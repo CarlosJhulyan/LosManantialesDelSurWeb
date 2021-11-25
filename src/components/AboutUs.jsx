@@ -5,7 +5,7 @@ import Vector from '../images/vector3.svg';
 
 const AboutUs = () => {
   return (
-    <section className="about">
+    <section className="about" id="about-us">
       <img className="about__background" src={Vector} alt="" />
       <section className="container about-container">
         <img className="about-container__image" src={Image} alt="Imagen de Nosotros" />

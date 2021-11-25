@@ -5,7 +5,7 @@ const OurServices = () => {
 		<div className="our-services">
 			<h2>NUESTROS SERVICIOS</h2>
 
-			<article className="our-services__item">
+			<article className="our-services__item" id="our-services">
 				<h4>Flota de Buses</h4>
 				<p>Cuenta con buses de variados, que sobresale por su rendimiento, durabilidad y seguridad. Además, los conductores tienen un acceso a un tablero personalizado en el bus, lo que ofrece una experiencia única, segura y cómoda a todos los conductores que manejan.</p>
 			</article>

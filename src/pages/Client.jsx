@@ -6,12 +6,9 @@ import DashboardClient from "../Layout/DashboardClient";
 import { Context } from "../context";
 import { registerClient, signUpClient } from '../services/AuthServices';
 
-const Register = ({ history }) => {
-  const servicio = new URLSearchParams(history.location.search).get('servicio');
-  const { signUp } = useContext(Context);
-  const goBack = () => {
-    history.goBack();
-  };
+const Client = ({ history }) => {
+  //const servicio = new URLSearchParams(history.location.search).get('servicio');
+  const { signUp, isAuth } = useContext(Context);
   const [ data, setData ] = useState({
     user: {
       nombres: '',
@@ -32,22 +29,32 @@ const Register = ({ history }) => {
   }
 
   const handleSubmit = () => {
+    fetchData(data.user);
+    // registerClient(data.user)
+    //   .then(client => {
+    //     if (client) {
+          
+    //     }
+    //   });
+  }
+
+  const fetchData = clientData => {
     setData({ ...data, loading: true });
-    registerClient(data.user)
-      .then(client => {
-        if (client) {
-          signUpClient(data.user.correo, data.user.dni).then(token => {
-            if (token) {
-              signUp(token.token);
-              setData({ ...data, loading: false });
-            }
-          });
-        }
-      });
+    signUpClient(clientData.correo, clientData.dni).then(res => {
+      if (res.token) {
+        signUp(res.token);
+        setData({ ...data, loading: false });
+      }
+      else {
+        console.log(res);
+      }
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   return (
-    <DashboardClient title="Registro" description="Es necesario que se registre para que pueda acceder a los servicios que tenemos para Ud.">
+    <DashboardClient title={isAuth ? 'Actualizar' : 'Registro'} description={isAuth ? 'Actualice sus datos si desea.' : 'Es necesario que se registre para que pueda acceder a los servicios que tenemos para Ud.'}>
       <Form name="register-client"
               layout="vertical"
               onSubmitCapture={handleSubmit}
@@ -75,7 +82,7 @@ const Register = ({ history }) => {
                       onChange={handleChange} />
             </Form.Item>
             <Form.Item label="Correo electronico">
-              <Input size="large" 
+              <Input size="large"
                       value={data.user.correo}
                       name="correo" 
                       onChange={handleChange} />
@@ -90,7 +97,7 @@ const Register = ({ history }) => {
             <Button size="large"
                     type="primary"
                     htmlType="button"
-                    onClick={() => goBack()}
+                    onClick={() => history.goBack()}
                     danger>
               Atrás
             </Button>
@@ -101,7 +108,7 @@ const Register = ({ history }) => {
                     type="primary"
                     loading={data.loading}
                     htmlType="submit">
-              Registrar
+              {isAuth ? 'Actualizar' : 'Registrar'}
             </Button>
           </Form.Item>
         </Row>
@@ -110,4 +117,4 @@ const Register = ({ history }) => {
   )
 }
 
-export default Register;
+export default Client;

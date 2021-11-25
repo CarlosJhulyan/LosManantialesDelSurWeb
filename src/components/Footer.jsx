@@ -31,7 +31,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="footer-2">
-				<small>&copy; 2021 <b>Los Manantiales</b> - Todos los derechos reservados</small>
+				<small>&copy; 2021 <b>Los Manantiales Del Sur SRL</b> - Todos los derechos reservados</small>
 			</div>
 		</footer>
 	)

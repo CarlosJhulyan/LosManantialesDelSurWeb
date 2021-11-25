@@ -7,35 +7,27 @@ import Dashboard from '../pages/Dashboard';
 import TypeServices from '../pages/TypeServices';
 import RegisterPackage from '../pages/RegisterPackage';
 import RegisterPayment from '../pages/RegisterPayment';
-import Register from '../pages/Register';
+import Client from '../pages/Client';
 import PackageTracking from '../pages/PackageTracking';
 import UpdateCliente from '../pages/UpdateCliente';
 import Passage from '../pages/Passage';
 
 function App() {
-  const { isAuth } = useContext(Context);
+  //const { isAuth } = useContext(Context);
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact component={Home} path="/" />
-        {
-          isAuth ? (
-            <>
-              <Route exact component={Dashboard} path="/cliente" />
-              <Route component={RegisterPayment} path="/cliente/registro-pago" />
-              <Route component={Passage} path="/cliente/compra-pasaje" />
-              <Route component={RegisterPackage} path="/cliente/registro-paquete" />
-              <Route component={UpdateCliente} path="/cliente/actualizar-datos" />
-              <Route component={PackageTracking} path="/cliente/seguimiento-paquete" />
-            </>
-          ) : (
-            <>
-              <Route component={Register} path="/cliente/registro" />
-              <Route component={TypeServices} path="/servicio" />
-            </>
-          )
-        }
+        <Route component={Client} path="/cliente/registro" />
+        <Route component={Client} path="/cliente/actualizar" />
+        <Route exact component={Dashboard} path="/cliente" />
+        <Route component={RegisterPayment} path="/cliente/registro-pago" />
+        <Route component={Passage} path="/cliente/compra-pasaje" />
+        <Route component={RegisterPackage} path="/cliente/registro-paquete" />
+        <Route component={UpdateCliente} path="/cliente/actualizar-datos" />
+        <Route component={PackageTracking} path="/cliente/seguimiento-paquete" />
+        <Route component={TypeServices} path="/servicio" />
         <Redirect to="/" from="*" />
       </Switch>
     </BrowserRouter>

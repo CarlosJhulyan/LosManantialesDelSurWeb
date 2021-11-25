@@ -8,11 +8,11 @@ const Header = () => {
       <img className="header-menu__logo" src={Logo} alt="Logotipo Los Manantiales Del Sur SRL" />
       <menu className="header-menu">
         <ul className="header-menu-list">
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Agencias</a></li>
-          <li><a href="#">Contactanos</a></li>
-          <li><a href="#">Nuestros Servicios</a></li>
-          <li><Link to="/cliente">PARA CLIENTES</Link></li>
+          <li><a href="#about-us">Nosotros</a></li>
+          <li><a href="#our-agencies">Agencias</a></li>
+          <li><a href="#contact">Contactanos</a></li>
+          <li><a href="#our-services">Nuestros Servicios</a></li>
+          <li><Link to="/servicio">PARA CLIENTES</Link></li>
         </ul>
         <div className="header-menu-social">
           <a href="https://www.facebook.com/ETM-Manantiales-DEL-SUR-2619080004773359/" target="_blank"><i className="fa fa-facebook" /></a>
