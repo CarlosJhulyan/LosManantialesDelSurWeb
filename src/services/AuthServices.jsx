@@ -15,7 +15,7 @@ export const registerClient = cliente => {
     .then(data => data);
 }
 
-export const signUpClient = (correo, dni) => {
+export const signInClient = (correo, dni) => {
   const data = {
     correo,
     dni

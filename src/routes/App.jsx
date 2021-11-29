@@ -3,17 +3,20 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Context } from "../context";
 
 import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
-import TypeServices from '../pages/TypeServices';
-import RegisterPackage from '../pages/RegisterPackage';
-import RegisterPayment from '../pages/RegisterPayment';
-import Client from '../pages/Client';
-import PackageTracking from '../pages/PackageTracking';
-import UpdateCliente from '../pages/UpdateCliente';
-import Passage from '../pages/Passage';
+import Dashboard from '../pages/Client/Dashboard';
+import TypeServices from '../pages/Client/TypeServices';
+import RegisterPackage from '../pages/Client/RegisterPackage';
+import RegisterPayment from '../pages/Client/RegisterPayment';
+import Client from '../pages/Client/Client';
+import PackageTracking from '../pages/Client/PackageTracking';
+import Passage from '../pages/Client/Passage';
+import SignInClient from "../pages/Client/SignInClient";
+
+import DashboardUser from '../pages/User/Dashboard';
+import Clients from "../pages/User/Clients";
 
 function App() {
-  //const { isAuth } = useContext(Context);
+  const { isAuth } = useContext(Context);
 
   return (
     <BrowserRouter>
@@ -25,10 +28,15 @@ function App() {
         <Route component={RegisterPayment} path="/cliente/registro-pago" />
         <Route component={Passage} path="/cliente/compra-pasaje" />
         <Route component={RegisterPackage} path="/cliente/registro-paquete" />
-        <Route component={UpdateCliente} path="/cliente/actualizar-datos" />
         <Route component={PackageTracking} path="/cliente/seguimiento-paquete" />
-        <Route component={TypeServices} path="/servicio" />
-        <Redirect to="/" from="*" />
+        <Route
+         component={TypeServices} path="/servicio" />
+        <Route component={SignInClient} path="/cliente/ingresar" />
+
+        <Route exact component={DashboardUser} path="/usuario" />
+        <Route component={Clients} path="/usuario/clientes" />
+
+        <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>
   );

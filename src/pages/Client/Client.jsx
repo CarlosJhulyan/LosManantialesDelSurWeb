@@ -2,48 +2,45 @@ import React, { useState, useContext } from "react";
 import { Input, Form, Button, Col, Row } from "antd";
 import { Link } from "react-router-dom";
 
-import DashboardClient from "../Layout/DashboardClient";
-import { Context } from "../context";
-import { registerClient, signUpClient } from '../services/AuthServices';
+import DashboardClient from "../../Layout/DashboardClient";
+import { Context } from "../../context";
+import { registerClient, signInClient } from '../../services/AuthServices';
 
 const Client = ({ history }) => {
-  //const servicio = new URLSearchParams(history.location.search).get('servicio');
-  const { signUp, isAuth } = useContext(Context);
-  const [ data, setData ] = useState({
-    user: {
-      nombres: '',
-      celular: '',
-      dni: '',
-      correo: ''
+  const { signUp, isAuth, setData, globalData } = useContext(Context);
+  const [ state, setState ] = useState({
+    data: {
+      nombres: globalData.data.nombres || '',
+      celular: globalData.data.celular || '',
+      dni: globalData.data.dni || '',
+      correo: globalData.data.correo || ''
     },
     loading: false
   });
 
   const handleChange = e => {
-    setData({
-      user: {
-        ...data.user,
+    setState({
+      data: {
+        ...state.data,
         [e.target.name]: e.target.value
       }
     });
   }
 
-  const handleSubmit = () => {
-    fetchData(data.user);
-    // registerClient(data.user)
-    //   .then(client => {
-    //     if (client) {
-          
-    //     }
-    //   });
+  const handleRegister = () => {
+    fetchData(state.data);
+  }
+
+  const handleUpdate = () => {
+    console.log('Encargado de actualizar');
   }
 
   const fetchData = clientData => {
-    setData({ ...data, loading: true });
-    signUpClient(clientData.correo, clientData.dni).then(res => {
+    setState({ ...state, loading: true });
+    signInClient(clientData.correo, clientData.dni).then(res => {
       if (res.token) {
         signUp(res.token);
-        setData({ ...data, loading: false });
+        setState({ ...state, loading: false });
       }
       else {
         console.log(res);
@@ -57,40 +54,41 @@ const Client = ({ history }) => {
     <DashboardClient title={isAuth ? 'Actualizar' : 'Registro'} description={isAuth ? 'Actualice sus datos si desea.' : 'Es necesario que se registre para que pueda acceder a los servicios que tenemos para Ud.'}>
       <Form name="register-client"
               layout="vertical"
-              onSubmitCapture={handleSubmit}
+              onSubmitCapture={isAuth ? handleUpdate : handleRegister}
               autoComplete="off">
         <Row justify="space-between">
           <Col span={11}>
             <Form.Item label="Nombres" required>
               <Input size="large" 
-                      value={data.user.nombres} 
+                      value={state.data.nombres} 
                       name="nombres" 
                       onChange={handleChange} />
             </Form.Item>
             <Form.Item label="DNI" required>
               <Input size="large" 
-                      value={data.user.dni} 
+                      value={state.data.dni} 
                       name="dni"
                       onChange={handleChange} />
             </Form.Item>
           </Col>
           <Col span={11}>
-            <Form.Item label="Celular" required>
+            <Form.Item label="Celular">
               <Input size="large" 
-                      value={data.user.celular} 
+                      value={state.data.celular} 
                       name="celular" 
                       onChange={handleChange} />
             </Form.Item>
             <Form.Item label="Correo electronico">
               <Input size="large"
-                      value={data.user.correo}
-                      name="correo" 
+                      value={state.data.correo}
+                      name="correo"
+                      disabled={isAuth}
                       onChange={handleChange} />
             </Form.Item>
           </Col>
         </Row>
         <Row>
-          Si ya te registraste con anterioridad <Link to="/cliente/ingresar" style={{marginLeft: 5, marginBottom: 20}}>ingresa aquí</Link>
+          Si ya te registraste con anterioridad <Link to="/cliente/ingresar" style={{ marginLeft: 5, marginBottom: 20 }}>ingresa aquí</Link>
         </Row>
         <Row justify="center">
           <Form.Item>
@@ -104,9 +102,9 @@ const Client = ({ history }) => {
           </Form.Item>
           <Form.Item>
             <Button size="large"
-                    style={{marginLeft: 10}}
+                    style={{ marginLeft: 10 }}
                     type="primary"
-                    loading={data.loading}
+                    loading={state.loading}
                     htmlType="submit">
               {isAuth ? 'Actualizar' : 'Registrar'}
             </Button>

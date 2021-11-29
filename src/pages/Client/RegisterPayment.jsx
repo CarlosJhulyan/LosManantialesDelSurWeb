@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Input, Form, Row, Button } from 'antd'
 
-import DashboardClient from "../Layout/DashboardClient";
-import PaymentMethod from "../components/Client/PaymentMethod";
+import DashboardClient from "../../Layout/DashboardClient";
+import PaymentMethod from "../../components/Client/PaymentMethod";
+import { Context } from "../../context";
 
-import Yape from '../images/yape.png';
-import Lukita from '../images/lukita.jpg';
-import Bim from '../images/bim.png';
-import Tunki from '../images/tunki.jpg';
-import Bbva from '../images/bbva.jpg';
-import Bcp from '../images/bcp.jpg';
-import Interbank from '../images/interbank.png';
-import Scotiabank from '../images/scotiabank.png';
+import Yape from '../../images/yape.png';
+import Lukita from '../../images/lukita.jpg';
+import Bim from '../../images/bim.png';
+import Tunki from '../../images/tunki.jpg';
+import Bbva from '../../images/bbva.jpg';
+import Bcp from '../../images/bcp.jpg';
+import Interbank from '../../images/interbank.png';
+import Scotiabank from '../../images/scotiabank.png';
 
 const RegisterPayment = ({ history }) => {
+  const { globalData } = useContext(Context);
+
   return (
     <DashboardClient title="PAGO" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, sunt, ea tempore ratione quod voluptates quibusdam quidem non veniam debitis itaque molestias illo nulla impedit voluptatibus accusamus, nam similique facere.
     Necessitatibus exercitationem nihil ea voluptatem esse nobis recusandae alias! Totam architecto fugit incidunt iusto. Modi pariatur consequatur dolor officiis aperiam commodi architecto assumenda nihil, nobis quia.">
@@ -22,7 +25,7 @@ const RegisterPayment = ({ history }) => {
         <PaymentMethod images={[ Bcp, Bbva, Scotiabank, Interbank ]} numbers={[ 'BCP: 193-1121663-0-28', 'Bbva: 0011-0814-0207578008-16', 'Scotiabank: 009-8894052', 'Interbank: 200-3079473367' ]} />
       </Row>
       <Row style={{ marginTop: 10 }}>
-        Total a pagar de Huamanga a Huanta es: S/15.00
+        Total a pagar de {globalData.origen} a {globalData.destino} es: S/ {globalData.total}
       </Row>
       <Row style={{ marginBottom: 20 }}>
         <small>

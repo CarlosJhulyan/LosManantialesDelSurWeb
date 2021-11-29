@@ -481,6 +481,39 @@ img {
   transform: scale(1.05, 1.05);
 }
 
+/*====================== DASHBOARD USER ======================*/
+
+.dashboard-user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: #1d2c53;
+}
+
+.dashboard-user-window {
+  width: 700px;
+  height: 75vh;
+  background: #d3def8;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.dashboard-user-window > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-user-window__title {
+  font-size: 2.5em;
+  text-align: center;
+  margin: 0;
+}
+
 /*====================== PAYMENT REGISTER ======================*/
 .payment-methods {
   width: 80%;
@@ -506,7 +539,7 @@ img {
   font-weight: bold;
 }
 
-/*====================== PASSAGE ======================*/
+/*====================== VANS ======================*/
 
 .container-vans {
   display: grid;
@@ -521,20 +554,42 @@ img {
 }
 
 .van-car__seat {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   padding: 15px 0;
   font-weight: bold;
-  font-size: 1.7em;
+  font-size: 1.8em;
 }
 
 .van-car__seat i {
-  margin: 0 10px;
+  margin: 3px 7px;
   text-shadow: 0 0 10px #000;
-  cursor: pointer;
+  border-radius: 5px;
+  padding: 2px;
 }
 
-.van-car__seat i:hover {
-  filter: brightness(150%);
+.van-car__seat i:nth-child(1) { order: -5; }
+.van-car__seat i:nth-child(2) { order: -10; }
+.van-car__seat i:nth-child(3) { order: 0; }
+.van-car__seat i:nth-child(4) { order: -6; }
+.van-car__seat i:nth-child(5) { order: -11; }
+.van-car__seat i:nth-child(6) { order: -1; }
+.van-car__seat i:nth-child(7) { order: -7; }
+.van-car__seat i:nth-child(8) { order: -12; }
+.van-car__seat i:nth-child(9) { order: -3; }
+.van-car__seat i:nth-child(10) { order: -8; }
+.van-car__seat i:nth-child(11) { order: -13; }
+.van-car__seat i:nth-child(12) { order: -4; }
+.van-car__seat i:nth-child(13) { order: -9; }
+.van-car__seat i:nth-child(14) { order: -14; }
+
+.van-car__license {
+  position: absolute;
+  top: 44%;
+  right: -20px;
+  transform: rotateZ(-90deg);
+  color: #fff;
 }
 
 .van-car__image {
