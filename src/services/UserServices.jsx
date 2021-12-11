@@ -2,12 +2,12 @@ import config from "./global";
 
 const URL = config.urlApi;
 
-export const getClientbyUuid = uuid => {
+export const getUserbyUuid = uuid => {
   const headers = {
     "Content-Type": "application/json"
   }
 
-  return fetch(`${URL}/cliente/${uuid}`, {
+  return fetch(`${URL}/usuario/${uuid}`, {
     headers
   }).then(res => res.json())
     .then(data => data);
@@ -18,30 +18,52 @@ export const getClients = () => {
     "Content-Type": "application/json"
   }
 
-  return fetch(`${URL}/cliente`, {
+  return fetch(`${URL}/usuario/clientes`, {
     headers
   }).then(res => res.json())
     .then(data => data);
 }
 
-export const deleteClient = uuid => {
+export const getUsers = () => {
   const headers = {
     "Content-Type": "application/json"
   }
 
-  return fetch(`${URL}/cliente?uuid=${uuid}`, {
+  return fetch(`${URL}/usuario`, {
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const getAdmins = () => {
+  const headers = {
+    "Content-Type": "application/json"
+  }
+
+  return fetch(`${URL}/usuario/admins`, {
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const deleteUser = uuid => {
+  const headers = {
+    "Content-Type": "application/json"
+  }
+
+  return fetch(`${URL}/usuario?uuid=${uuid}`, {
     headers,
     method: "DELETE"
   }).then(res => res.json())
     .then(data => data);
 }
 
-export const updateClient = (data) => {
+export const updateUser = data => {
   const headers = {
     "Content-Type": "application/json"
   }
 
-  return fetch(`${URL}/cliente`, {
+  return fetch(`${URL}/usuario`, {
     headers,
     method: "DELETE",
     body: JSON.stringify(data)

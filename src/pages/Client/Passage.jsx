@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Row, Form } from "antd";
+import { Button, Row, Form, Empty, message } from "antd";
+import { Link } from "react-router-dom";
 
 import DashboardClient from "../../Layout/DashboardClient";
 import ContainerVans from '../../components/Client/ContainerVans';
 import { getTravelPrice } from "../../services/Services";
 import { getVehicules } from "../../services/VehiculeServices";
-import context, { Context } from "../../context";
+import { Context } from "../../context";
 
 class Passage extends React.Component {
   static contextType = Context;
@@ -50,12 +51,15 @@ class Passage extends React.Component {
     });
   }
 
-  fetchVehicules(globalData) {
-    getVehicules(globalData.origen, globalData.destino).then(data => {
+  async fetchVehicules(globalData) {
+    try {
+      const response = await getVehicules(globalData.origen, globalData.destino);
       this.setState({
-        vehicules: data
+        vehicules: response
       });
-    })
+    } catch (error) {
+      message.error(error.message);
+    }
   }
 
   render() {
@@ -63,7 +67,11 @@ class Passage extends React.Component {
     return (
       <DashboardClient title="Compra de pasajes" description="Seleccione el horario y asiento que desea comprar">
         <Row>
-          <ContainerVans total={this.state.total} vehicules={this.state.vehicules} />
+          {
+            this.state.vehicules.length > 0 ? 
+              <ContainerVans total={this.state.total} vehicules={this.state.vehicules} /> :
+              <Empty style={{ margin: "0 auto" }} description="No hay vehiculos ahora" />
+          }
         </Row>
         <Row style={{ marginBottom: 20 }}>
           Total a pagar es <strong style={{marginLeft: 5}}>S/. {globalData.total}</strong>
@@ -78,14 +86,16 @@ class Passage extends React.Component {
               Atrás
             </Button>
           </Form.Item>
-          <Form.Item>
-            <Button size="large"
-                    style={{ marginLeft: 10 }}
-                    type="primary"
-                    htmlType="submit">
-              Continuar
-            </Button>
-          </Form.Item>
+          {
+            this.state.vehicules.length > 0 && 
+            <Form.Item>
+              <Button size="large"
+                      style={{ marginLeft: 10 }}
+                      type="primary">
+                <Link to="/cliente/registro-pago">Continuar</Link>
+              </Button>
+            </Form.Item>
+          }
         </Row>
       </DashboardClient>
     )

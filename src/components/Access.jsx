@@ -11,7 +11,7 @@ const Access = () => {
 				<div className="container access-container">
 					<div>
 						<h3 className="access-container__title">Si quieres acceder a nuestros servicios.</h3>
-						<button className="btn"><Link to="/servicio">Accede aquí</Link></button>
+						<button className="btn"><Link to="/cliente">Accede aquí</Link></button>
 					</div>
 					<img src={Image} alt="Imagen de un paquete" />
 				</div>

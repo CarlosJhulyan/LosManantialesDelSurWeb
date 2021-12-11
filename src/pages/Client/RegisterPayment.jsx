@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
-import { Input, Form, Row, Button } from 'antd'
+import React, { useContext, useState } from "react";
+import { Input, Form, Row, Button, message } from 'antd'
 
 import DashboardClient from "../../Layout/DashboardClient";
 import PaymentMethod from "../../components/Client/PaymentMethod";
 import { Context } from "../../context";
+import { updateCode, createDestinatario, createPassage } from "../../services/Services";
+import { getVehicules } from "../../services/VehiculeServices";
+import { createPackage, createStatusTracking, createTracking } from "../../services/TrackingServices";
+import formatDateToDatetime from '../../utils/formatDateToDatetime';
+import generateNumberGuide from "../../utils/generateNumberGuide";
 
 import Yape from '../../images/yape.png';
 import Lukita from '../../images/lukita.jpg';
@@ -15,27 +20,134 @@ import Interbank from '../../images/interbank.png';
 import Scotiabank from '../../images/scotiabank.png';
 
 const RegisterPayment = ({ history }) => {
-  const { globalData } = useContext(Context);
+  const { globalData, setData } = useContext(Context);
+  const [state, setState] = useState({
+    code: "",
+    loading: false
+  })
+
+  const handleSubmit = () => {
+    if (state.code === null || state.code === "" || state.code.length > 6) {
+      message.warning("Campo no valido");
+      return;
+    }
+    setState({ ...state, loading: true });
+    updateCode(state.code).then(res => {
+      if (res.statusCode === 200)
+        if (globalData.paquete)
+          handleSubmitPackage();
+        else
+          handleSubmitPassage();
+      else if (res.statusCode === 404) message.warning(res.message);
+      else message.warning(res.title);
+      setState({ ...state, loading: false });
+    }).catch(error => message.error(error.message));
+  }
+
+  const handleSubmitPackage = () => {
+    getVehicules(globalData.origen, globalData.destino).then(vehicule => {
+      const idVehicule = vehicule[0].id;
+      createTracking({ 
+        fechEnvio: formatDateToDatetime(new Date())
+      }).then(responseTracking => {
+        if (responseTracking.message)
+          createStatusTracking({
+            seguimiento: responseTracking.data.uuid,
+            descripcion: "Salio de la sucursal de origen",
+            fecha: formatDateToDatetime(new Date())
+          }).then(responseStatus => {
+            if (responseStatus.message)
+              createDestinatario(globalData.destinatario).then(responseDestinatario => {
+                if (responseDestinatario.message)
+                  createPackage({
+                    ...globalData.paquete,
+                    remitente: globalData.data.uuid,
+                    destinatario: responseDestinatario.data.uuid,
+                    seguimiento: responseTracking.data.uuid,
+                    vehiculo: idVehicule,
+                    origenPaquete: globalData.origen,
+                    destinoPaquete: globalData.destino,
+                    montoTotal: globalData.total,
+                    codigoValidacion: state.code,
+                    numeroGuia: generateNumberGuide()
+                  }).then(success => {
+                    if (success.statusCode == 201) {
+                      message.success(success.message);
+                      setData({
+                        ...globalData,
+                        ticket: {
+                          numeroGuia: success.data.numeroGuia,
+                          numeroSeguimiento: responseTracking.data.numeroSeguimiento,
+                          fechaEnvio: responseTracking.data.fechaEnvio,
+                          codigo: state.code,
+                          destinatario: responseDestinatario.data,
+                          remitente: globalData.data,
+                          montoTotal: success.data.montoTotal,
+                          origen: success.data.origenPaquete,
+                          destino: success.data.destinoPaquete
+                        }
+                      });
+                      history.push("/cliente");
+                    }
+                  }).catch(error => message.error(error.message));;
+              }).catch(error => message.error(error.message));;
+          }).catch(error => message.error(error.message));;
+      }).catch(error => message.error(error.message));;
+    }).catch(error => message.error(error.message));
+  }
+
+  const handleSubmitPassage = () => {
+    createPassage({
+      ...globalData.pasaje,
+      pasajero: globalData.data.uuid,
+      codigoValidacion: state.code,
+      origenSucursal: globalData.origen,
+      destinoSucursal: globalData.destino,
+      montoTotal: globalData.total,
+      numeroGuia: generateNumberGuide()
+    }).then(res => {
+      console.log(res);
+      if (res.statusCode == 201) {
+        message.success(res.message);
+        setData({
+          ...globalData,
+          ticket: {
+            numeroGuia: res.data.numeroGuia,
+            codigo: state.code,
+            pasajero: globalData.data,
+            montoTotal: res.data.montoTotal,
+            origen: res.data.origenSucursal,
+            destino: res.data.destinoSucursal
+          }
+        });
+        history.push("/cliente");
+      }
+    }).catch(error => message.error(error.message));
+  }
+
+  const handleChange = e => setState({ ...state, code: e.target.value.toUpperCase() });
 
   return (
     <DashboardClient title="PAGO" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, sunt, ea tempore ratione quod voluptates quibusdam quidem non veniam debitis itaque molestias illo nulla impedit voluptatibus accusamus, nam similique facere.
     Necessitatibus exercitationem nihil ea voluptatem esse nobis recusandae alias! Totam architecto fugit incidunt iusto. Modi pariatur consequatur dolor officiis aperiam commodi architecto assumenda nihil, nobis quia.">
       <Row>
-        <PaymentMethod images={[ Yape, Lukita, Bim, Tunki ]} numbers={[ 'Tunki: 935990471', 'Lukita: 935990471', 'Bim: 935990471', 'Tunki: 935990471' ]} />
+        <PaymentMethod images={[ Yape, Lukita, Bim, Tunki ]} numbers={[ 'Tunki: 935 990 471', 'Lukita: 935 990 471', 'Bim: 935 990 471', 'Tunki: 935 990 471' ]} />
         <PaymentMethod images={[ Bcp, Bbva, Scotiabank, Interbank ]} numbers={[ 'BCP: 193-1121663-0-28', 'Bbva: 0011-0814-0207578008-16', 'Scotiabank: 009-8894052', 'Interbank: 200-3079473367' ]} />
       </Row>
       <Row style={{ marginTop: 10 }}>
-        Total a pagar de {globalData.origen} a {globalData.destino} es: S/ {globalData.total}
+        Total a pagar es: S/ {globalData.total}
       </Row>
       <Row style={{ marginBottom: 20 }}>
         <small>
-          <b>Nota:</b> para obtener su código de validación de su pago, enviar el vaucher al número en WhatsApp (+51) 935990471
+          <b>Nota:</b> para obtener su código de validación de su pago, enviar el vaucher al número en WhatsApp (+51) 935 990 471
         </small>
       </Row>
-      <Form>
+      <Form onSubmitCapture={handleSubmit}>
         <Row justify="center">
           <Form.Item label="Código de Validación">
-            <Input placeholder="Ejemplo: B7Y3D0" />
+            <Input onChange={handleChange}
+                    placeholder="Ejemplo: B7Y3D0"
+                    value={state.code} />
           </Form.Item>
         </Row>
         <Row justify="center">
@@ -52,6 +164,7 @@ const RegisterPayment = ({ history }) => {
             <Button size="large"
                     style={{ marginLeft: 10 }}
                     type="primary"
+                    loading={state.loading}
                     htmlType="submit">
               Confirmar
             </Button>

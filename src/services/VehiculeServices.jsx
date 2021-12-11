@@ -4,7 +4,8 @@ const URL = config.urlApi;
 
 export const getVehicules = (origen, destino) => {
   const headers = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
   }
 
   return fetch(`${URL}/vehiculo?origen=${origen}&destino=${destino}`, {
@@ -15,7 +16,8 @@ export const getVehicules = (origen, destino) => {
 
 export const getAvailableSeats = (id) => {
   const headers = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
   }
 
   return fetch(`${URL}/vehiculo/asientos/${id}`, {

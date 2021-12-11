@@ -542,15 +542,15 @@ img {
 /*====================== VANS ======================*/
 
 .container-vans {
-  display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  margin-top: 50px;
 }
 
 .van-car {
   position: relative;
-  height: 140px;
+  height: 180px;
+  width: 300px;
+  margin: 0 auto;
 }
 
 .van-car__seat {
@@ -559,7 +559,7 @@ img {
   position: relative;
   padding: 15px 0;
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 2.8em;
 }
 
 .van-car__seat i {
@@ -605,6 +605,7 @@ img {
   border-radius: 10px;
   text-align: center;
   color: #fff;
-  padding: 2px 0;
+  padding: 2px 30px;
   margin-bottom: 5px;
+  cursor: pointer;
 }

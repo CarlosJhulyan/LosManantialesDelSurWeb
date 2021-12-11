@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Button, Row, Table, message, Popconfirm } from 'antd';
 
 import DashboardUser from '../../Layout/DashboardUser';
-import { getClients, deleteUser } from '../../services/UserServices';
+import { getAdmins, deleteUser } from '../../services/UserServices';
 
-class Clients extends Component {
+class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,27 +25,28 @@ class Clients extends Component {
 
   async fetchData () {
     try {
-      const response = await getClients();
-      const dataFormat = response.map((client, i) => {
-        return { ...client, i: i + 1, key: i };
+      const response = await getAdmins();
+      const dataFormat = response.map((user, i) => {
+        return { ...user, i: i + 1, key: i };
       });
       this.setState({
         data: dataFormat,
         loadingTable: false
       });
     } catch (error) {
-      message.error(error.message)
+      message.error(error.message);
     }
   }
 
   render() {
+
     const handleDelete = (uuid) => {
       this.setState({ loadingTable: true });
       deleteUser(uuid).then(res => {
-        if(res.message) message.success(res.message);
+        if (res.message) message.success(res.message);
         else message.warning(res.title);
         this.setState({ loadingTable: false });
-      }).catch(err => message.error(err.message));
+      }).catch(error => message.error(error.message));
     }
 
     const columns = [
@@ -57,42 +58,45 @@ class Clients extends Component {
       {
         title: 'Nombres',
         dataIndex: 'nombres',
-        width: 200
+        width: 160
       },
       {
         title: 'Correo',
         dataIndex: 'correo',
-        width: 200
+        width: 160
       },
       {
-        title: 'Celular',
-        dataIndex: 'celular',
+        title: 'DNI',
+        dataIndex: 'dni'
+      },
+      {
+        title: 'Rol',
+        dataIndex: 'rol',
       },
       {
         title: 'Acciones',
         dataIndex: 'uuid',
         width: 80,
         align: "center",
-        render: uuid => (
-          <Popconfirm title="¿Está seguro de liminar este usuario?"
-                      onConfirm={() => handleDelete(uuid)}
-                      cancelText="Cancelar"
-                      okText="Finalizar">
-            <a title="Ver los estados"
-                style={{ color: "red" }}>
-              <i className="fa fa-trash" />
-            </a>
-          </Popconfirm>
-        )
+        render: uuid => 
+        <Popconfirm title="¿Está seguro de liminar este usuario?"
+                    onConfirm={() => handleDelete(uuid)}
+                    cancelText="Cancelar"
+                    okText="Finalizar">
+          <a title="Ver los estados"
+            style={{ color: "red" }}>
+            <i className="fa fa-trash" />
+          </a>
+        </Popconfirm>
       }
     ];
 
     return (
-      <DashboardUser title="Lista de Clientes">
+      <DashboardUser title="Lista de Usuarios">
         <Table size="small"
-                loading={this.state.loadingTable}
                 columns={columns}
-                scroll={{ y: 320 }}
+                scroll={{ y: 300 }}
+                loading={this.state.loadingTable}
                 dataSource={this.state.data} />
         <Row justify="center" style={{ marginTop: 10 }}>
           <Button size="large"
@@ -108,4 +112,4 @@ class Clients extends Component {
   }
 }
 
-export default Clients;
+export default Users;

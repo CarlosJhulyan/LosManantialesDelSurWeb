@@ -12,7 +12,7 @@ const Header = () => {
           <li><a href="#our-agencies">Agencias</a></li>
           <li><a href="#contact">Contactanos</a></li>
           <li><a href="#our-services">Nuestros Servicios</a></li>
-          <li><Link to="/servicio">PARA CLIENTES</Link></li>
+          <li><Link to="/cliente">PARA CLIENTES</Link></li>
         </ul>
         <div className="header-menu-social">
           <a href="https://www.facebook.com/ETM-Manantiales-DEL-SUR-2619080004773359/" target="_blank"><i className="fa fa-facebook" /></a>

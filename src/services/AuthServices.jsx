@@ -15,16 +15,12 @@ export const registerClient = cliente => {
     .then(data => data);
 }
 
-export const signInClient = (correo, dni) => {
-  const data = {
-    correo,
-    dni
-  }
+export const signIn = data => {
   const headers = {
     "Content-Type": "application/json"
   }
 
-  return fetch(`${URL}/auth/cliente`, {
+  return fetch(`${URL}/auth`, {
     headers,
     method: "POST",
     body: JSON.stringify(data)

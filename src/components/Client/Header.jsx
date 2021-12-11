@@ -11,20 +11,21 @@ const Header = () => {
   
   return (
     <header className="header-client">
-      <div className="header-client__user">
+      <Link to={`/${globalData.data.rol !== 'cliente' ? 'usuario' : 'cliente'}`} className="header-client__user">
         {
           isAuth && (
             <>
               <Avatar src="https://joeschmoe.io/api/v1/random" />
               <span> {globalData.data.nombres}</span>
+              <small style={{ color: "#ccc" }}> ({globalData.data.rol})</small>
             </>
           )
         }
-      </div>
+      </Link>
       <img className="header-client__logo" src={Logotipo} alt="Logotipo" />
       {
         isAuth ? 
-        <Link className="header-client__setting" to="/cliente/actualizar">
+        <Link className="header-client__setting" to={`/${globalData.data.rol !== 'cliente' ? 'usuario' : 'cliente'}/actualizar`}>
           <i className="fa fa-cog" />
         </Link> : <span />
       }

@@ -5,16 +5,14 @@ import { getAvailableSeats, getSeatPrice } from "../../services/VehiculeServices
 import VanImage from '../../images/van.png';
 import { Context } from "../../context";
 
-const Van = ({ salida, ...props }) => {
+const Van = ({ ...props }) => {
   const { globalData, setData } = useContext(Context);
   const [ state, setState ] = useState({
     asientos: [],
     asientoSeleccionado: -1,
     asientoPrecios: []
   });
-
   useEffect(() => {
-    
     getAvailableSeats(props.id).then(asientos => {
       getSeatPrice().then(asientoPrecios => {
         setState({
@@ -23,7 +21,7 @@ const Van = ({ salida, ...props }) => {
         })
       });
     });
-  }, [])
+  }, [props.id])
 
   const handleClick = (e, available) => {
     if (!available) {
@@ -48,7 +46,12 @@ const Van = ({ salida, ...props }) => {
         const total = props.total + (props.total * porcentaje / 100);
         setData({
           ...globalData,
-          total
+          total,
+          paquete: null,
+          pasaje: {
+            ...globalData.pasaje,
+            numeroAsiento
+          }
         });
       }
     }
@@ -56,15 +59,12 @@ const Van = ({ salida, ...props }) => {
   
   return (
     <div className="van">
-      <div className="van__schedule">
-        Salida: {salida}
-      </div>
       <div className="van-car">
         <img className="van-car__image" src={VanImage} alt="Imagen de la van" />
         <span className="van-car__license">{props.placa}</span>
         <div className="van-car__seat">
           {
-            state.asientos.map((a, i) => 
+            state.asientos && state.asientos.map((a, i) => 
             <i key={i} 
                 className="fa fa-compact-disc" 
                 data-id={i+1}

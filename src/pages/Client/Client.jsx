@@ -4,7 +4,26 @@ import { Link } from "react-router-dom";
 
 import DashboardClient from "../../Layout/DashboardClient";
 import { Context } from "../../context";
-import { registerClient, signInClient } from '../../services/AuthServices';
+import { registerClient, signIn } from '../../services/AuthServices';
+import DashboardUser from "../../Layout/DashboardUser";
+
+const RenderDashboard = ({ children, rol, title, description }) => {
+  if (rol !== 'cliente')
+    return (
+      <DashboardUser title={title} description={description}>
+        {
+          children
+        }
+      </DashboardUser>
+    )
+  return (
+    <DashboardClient title={title} description={description}>
+      {
+        children
+      }
+    </DashboardClient>
+  )
+}
 
 const Client = ({ history }) => {
   const { signUp, isAuth, setData, globalData } = useContext(Context);
@@ -13,7 +32,9 @@ const Client = ({ history }) => {
       nombres: globalData.data.nombres || '',
       celular: globalData.data.celular || '',
       dni: globalData.data.dni || '',
-      correo: globalData.data.correo || ''
+      correo: globalData.data.correo || '',
+      pass: '',
+      direccion: globalData.data.direccion
     },
     loading: false
   });
@@ -37,7 +58,7 @@ const Client = ({ history }) => {
 
   const fetchData = clientData => {
     setState({ ...state, loading: true });
-    signInClient(clientData.correo, clientData.dni).then(res => {
+    signIn(clientData.correo, clientData.dni).then(res => {
       if (res.token) {
         signUp(res.token);
         setState({ ...state, loading: false });
@@ -51,7 +72,7 @@ const Client = ({ history }) => {
   }
 
   return (
-    <DashboardClient title={isAuth ? 'Actualizar' : 'Registro'} description={isAuth ? 'Actualice sus datos si desea.' : 'Es necesario que se registre para que pueda acceder a los servicios que tenemos para Ud.'}>
+    <RenderDashboard rol={globalData.data.rol} title={isAuth ? 'Actualizar' : 'Registro'} description={isAuth ? 'Actualice sus datos si desea.' : 'Es necesario que se registre para que pueda acceder a los servicios que tenemos para Ud.'}>
       <Form name="register-client"
               layout="vertical"
               onSubmitCapture={isAuth ? handleUpdate : handleRegister}
@@ -70,6 +91,12 @@ const Client = ({ history }) => {
                       name="dni"
                       onChange={handleChange} />
             </Form.Item>
+            <Form.Item label="Contraseña">
+              <Input size="large"
+                      value={state.data.pass}
+                      name="pass"
+                      onChange={handleChange} />
+            </Form.Item>
           </Col>
           <Col span={11}>
             <Form.Item label="Celular">
@@ -85,10 +112,16 @@ const Client = ({ history }) => {
                       disabled={isAuth}
                       onChange={handleChange} />
             </Form.Item>
+            <Form.Item label="Domicilio">
+              <Input size="large"
+                      value={state.data.direccion}
+                      name="direccion"
+                      onChange={handleChange} />
+            </Form.Item>
           </Col>
         </Row>
         <Row>
-          Si ya te registraste con anterioridad <Link to="/cliente/ingresar" style={{ marginLeft: 5, marginBottom: 20 }}>ingresa aquí</Link>
+          Si ya te registraste con anterioridad <Link to="/ingresar" style={{ marginLeft: 5, marginBottom: 20 }}>ingresa aquí</Link>
         </Row>
         <Row justify="center">
           <Form.Item>
@@ -111,7 +144,7 @@ const Client = ({ history }) => {
           </Form.Item>
         </Row>
       </Form>
-    </DashboardClient>
+    </RenderDashboard>
   )
 }
 

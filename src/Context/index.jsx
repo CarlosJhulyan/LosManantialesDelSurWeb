@@ -8,7 +8,8 @@ const Provider = ({ children }) => {
   });
 
   const [globalData, setglobalData] = useState(JSON.parse(sessionStorage.getItem('data')) ? JSON.parse(sessionStorage.getItem('data')) : {
-    servicio: '',
+    paquete: {},
+    pasaje: {},
     destino: '',
     origen: '',
     total: 0.0,
