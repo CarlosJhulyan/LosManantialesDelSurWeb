@@ -52,7 +52,8 @@ class Prices extends Component {
       if (e.target.id === `paquete${id}`) data.precioPaquete = this.state[e.target.id];
       if (e.target.id === `pasaje${id}`) data.precioPasaje = this.state[e.target.id];
       updateTravelPrice(data).then(res=> {
-        if (!res.title) message.success(res.message);
+        if (res.statusCode === 200) message.success(res.message);
+        else if (res.statusCode === 401) message.warning(res.message);
         else message.warning(res.title);
       }).catch(error => {
         message.error(error.message);

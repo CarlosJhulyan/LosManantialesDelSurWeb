@@ -1,14 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Input, Form, Row, Button, message } from 'antd'
 
 import DashboardClient from "../../Layout/DashboardClient";
 import PaymentMethod from "../../components/Client/PaymentMethod";
 import { Context } from "../../context";
-import { updateCode, createDestinatario, createPassage } from "../../services/Services";
-import { getVehicules } from "../../services/VehiculeServices";
+import { updateCode, createDestinatario, createPassage, getPassagesByIdVehicule, updateIdVehiculePassage } from "../../services/Services";
+import { getVehicules, updateVehicule } from "../../services/VehiculeServices";
 import { createPackage, createStatusTracking, createTracking } from "../../services/TrackingServices";
 import formatDateToDatetime from '../../utils/formatDateToDatetime';
 import generateNumberGuide from "../../utils/generateNumberGuide";
+import { getAvailableSeats } from "../../services/VehiculeServices";
 
 import Yape from '../../images/yape.png';
 import Lukita from '../../images/lukita.jpg';
@@ -84,7 +85,8 @@ const RegisterPayment = ({ history }) => {
                           remitente: globalData.data,
                           montoTotal: success.data.montoTotal,
                           origen: success.data.origenPaquete,
-                          destino: success.data.destinoPaquete
+                          destino: success.data.destinoPaquete,
+                          fecha: success.data.createdAt
                         }
                       });
                       history.push("/cliente");
@@ -106,9 +108,31 @@ const RegisterPayment = ({ history }) => {
       montoTotal: globalData.total,
       numeroGuia: generateNumberGuide()
     }).then(res => {
-      console.log(res);
       if (res.statusCode == 201) {
         message.success(res.message);
+        getAvailableSeats(globalData.pasaje.vehiculoPasaje).then(asientos => {
+          const asientosFilter = asientos.asientos.filter(asiento => asiento === 0);
+          if (asientosFilter.length === 0) {
+            updateVehicule({
+              id: globalData.pasaje.vehiculoPasaje,
+              sucursalActual: globalData.destino,
+              sucursalFinal: globalData.origen
+            }).then(update => {
+              if (update.statusCode == 200) {
+                getPassagesByIdVehicule(globalData.pasaje.vehiculoPasaje).then(res => {
+                  if (res)
+                    res.map(passage => {
+                      updateIdVehiculePassage(passage).then(res => {
+                        if (res.statusCode === 200) {
+                          console.log(res.message);
+                        }
+                      });
+                    });
+                });
+              }
+            }).catch(error => message.error(error.message));
+          }
+        });
         setData({
           ...globalData,
           ticket: {
@@ -117,7 +141,9 @@ const RegisterPayment = ({ history }) => {
             pasajero: globalData.data,
             montoTotal: res.data.montoTotal,
             origen: res.data.origenSucursal,
-            destino: res.data.destinoSucursal
+            destino: res.data.destinoSucursal,
+            fecha: res.data.createdAt,
+            numeroAsiento: res.data.numeroAsiento
           }
         });
         history.push("/cliente");

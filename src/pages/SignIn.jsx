@@ -3,11 +3,11 @@ import { Form, Input, Button, Row, Col, message } from 'antd';
 import { Link } from "react-router-dom";
 
 import DashboardClient from "../Layout/DashboardClient";
-import { signIn } from "../services/AuthServices";
+import { signIn as signInService } from "../services/AuthServices";
 import { Context } from "../context";
 
 const SignUpClient = ({ history }) => {
-  const { signUp, setData, globalData } = useContext(Context);
+  const { signIn, setData, globalData } = useContext(Context);
   const [ state, setState ] = useState({
     data: {
       password: '',
@@ -26,28 +26,20 @@ const SignUpClient = ({ history }) => {
   }
 
   const handleSubmit = () => {
-    const { password, correo } = state.data;
-    if (password.trim() === "" || correo.trim() === "") {
-      message.warning("Campos vacios.");
-      return;
-    }
-
     fetchData(state.data);
   }
 
   const fetchData = data => {
     setState({ ...state, loading: true });
-    signIn(data).then(res => {
-      if (res.token){
-        signUp(res.token.token);
+    signInService(data).then(res => {
+      if (res.statusCode === 200){
+        signIn(res.token.token);
         delete res.data.paquete;
         delete res.data.pasaje;
-        delete res.data.createdAt;
         setData({ ...globalData, data: res.data });
         history.push(`/${res.data.rol !== 'cliente' ? 'usuario' : 'cliente'}`);
       }
-      else
-        message.warning(res.value.message);
+      else message.warning(res.value.message);
       setState({ ...state, loading: false });
     }).catch(() => {
       message.error("Error 500: Fallo en los servidores");
@@ -58,19 +50,37 @@ const SignUpClient = ({ history }) => {
     <DashboardClient title="Ingresar">
       <Form name="register-client"
               layout="vertical"
-              onSubmitCapture={handleSubmit}
+              onFinish={handleSubmit}
               autoComplete="off">
         <Row justify="space-between">
           <Col span={11}>
-            <Form.Item label="Correo electronico">
+            <Form.Item label="Correo electronico" 
+                        name="correo"
+                        rules={[
+                          {
+                            type: 'email',
+                            message: 'Este correo no es valido'
+                          },
+                          {
+                            required: true,
+                            message: 'Ingrese su correo electrónico'
+                          }
+                        ]}>
               <Input size="large"
                       value={state.data.correo}
-                      name="correo" 
+                      name="correo"
                       onChange={handleChange} />
             </Form.Item>
           </Col>
           <Col span={11}>
-            <Form.Item label="Contraseña">
+            <Form.Item label="Contraseña"
+                        name="password"
+                        rules={[
+                          {
+                            required: true,
+                            message: 'Ingrese su contraseña'
+                          }
+                        ]}>
               <Input.Password size="large" 
                               value={state.data.password} 
                               name="password"

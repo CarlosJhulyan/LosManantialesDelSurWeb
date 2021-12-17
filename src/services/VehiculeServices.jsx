@@ -14,6 +14,20 @@ export const getVehicules = (origen, destino) => {
     .then(data => data);
 }
 
+export const updateVehicule = data => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+  }
+
+  return fetch(`${URL}/vehiculo`, {
+    headers,
+    method: "PUT",
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .then(data => data);
+}
+
 export const getAvailableSeats = (id) => {
   const headers = {
     "Content-Type": "application/json",

@@ -44,7 +44,8 @@ class PricesPercent extends Component {
       }
       this.setState({ [`loadingSubmit${price.numeroAsiento}`]: true });
       updatePricePercent(data).then(res => {
-        if (res.message) message.success(res.message);
+        if (res.statusCode === 200) message.success(res.message);
+        else if (res.statusCode === 401) message.warning(res.message);
         else message.warning(res.title);
         this.setState({ [`loadingSubmit${price.numeroAsiento}`]: false });
       }).catch(error => message.error(error.message));

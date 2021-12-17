@@ -52,7 +52,7 @@ const Dashboard = () => {
     documentTitle: globalData.ticket && `Resumen de Servicio N° ${globalData.ticket.numeroGuia}`,
     pageStyle: `
       @page {
-        size: 130mm 180mm;
+        size: 130mm 200mm;
       }
 
       @media all {
@@ -160,7 +160,8 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   const sucursales = props.data.sucursales;
   return (
     <div ref={ref}>
-      <h2><b>{`Resumen de Servicio N° ${globalData.ticket.numeroGuia}`}</b></h2>
+      <h1 style={{ textAlign: "center", color: "blue", fontWeight: "bold" }}>Empresa de Transporte LOS MANANTIALES DEL SUL SRL</h1>
+      <h2 style={{ textAlign: "center", fontWeight: "bold" }}><b>{`Resumen de Servicio N° ${globalData.ticket.numeroGuia}`}</b></h2>
       <Descriptions column={2} title="Datos de Origen y Destino">
         <Descriptions.Item label="Origen">
           {
@@ -201,7 +202,11 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
           globalData.ticket.numeroSeguimiento && <Descriptions.Item label="Número de seguimiento">{globalData.ticket.numeroSeguimiento}</Descriptions.Item>
         }
         <Descriptions.Item label="Monto total">S/. {globalData.ticket.montoTotal}</Descriptions.Item>
+        {
+          globalData.ticket.numeroAsiento && <Descriptions.Item label="Número de asiento">{globalData.ticket.numeroAsiento}</Descriptions.Item>
+        }
       </Descriptions>
+      <p style={{ textAlign: "right", width: "100%" }}>{new Date(globalData.ticket.fecha).toLocaleString()}</p>
     </div>
   )
 });

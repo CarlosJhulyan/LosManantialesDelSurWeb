@@ -60,12 +60,26 @@ export const deleteUser = uuid => {
 
 export const updateUser = data => {
   const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+  }
+
+  return fetch(`${URL}/usuario`, {
+    headers,
+    method: "PUT",
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const registerUser = data => {
+  const headers = {
     "Content-Type": "application/json"
   }
 
   return fetch(`${URL}/usuario`, {
     headers,
-    method: "DELETE",
+    method: "POST",
     body: JSON.stringify(data)
   }).then(res => res.json())
     .then(data => data);

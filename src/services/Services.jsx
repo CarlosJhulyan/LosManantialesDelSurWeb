@@ -129,3 +129,29 @@ export const createPassage = data => {
   }).then(res => res.json())
     .then(data => data);
 }
+
+export const getPassagesByIdVehicule = id => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+  }
+
+  return fetch(`${URL}/pasaje?id=${id}`, {
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const updateIdVehiculePassage = data => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+  }
+
+  return fetch(`${URL}/pasaje`, {
+    headers,
+    method: "PUT",
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .then(data => data);
+}

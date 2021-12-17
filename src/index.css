@@ -71,6 +71,11 @@ img {
 .ant-input {
   border-radius: 10px !important;
 }
+ 
+.ant-input-password {
+  border-radius: 10px !important;
+}
+
 /*====================== HEADER ======================*/
 
 .header {

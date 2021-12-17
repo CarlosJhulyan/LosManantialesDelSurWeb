@@ -23,8 +23,9 @@ const Provider = ({ children }) => {
   const value = {
     isAuth,
     globalData,
-    signIn: () => {
-      console.log('Entrar');
+    signIn: token => {
+      window.sessionStorage.setItem('token', token);
+      setIsAuth(window.sessionStorage.getItem('token') ? true : false);
     },
     signUp: token => {
       window.sessionStorage.setItem('token', token);
