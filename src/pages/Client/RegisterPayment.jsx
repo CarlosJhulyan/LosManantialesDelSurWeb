@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Input, Form, Row, Button, message } from 'antd'
 
 import DashboardClient from "../../Layout/DashboardClient";
@@ -72,7 +72,7 @@ const RegisterPayment = ({ history }) => {
                     codigoValidacion: state.code,
                     numeroGuia: generateNumberGuide()
                   }).then(success => {
-                    if (success.statusCode == 201) {
+                    if (success.statusCode === 201) {
                       message.success(success.message);
                       setData({
                         ...globalData,
@@ -108,7 +108,7 @@ const RegisterPayment = ({ history }) => {
       montoTotal: globalData.total,
       numeroGuia: generateNumberGuide()
     }).then(res => {
-      if (res.statusCode == 201) {
+      if (res.statusCode === 201) {
         message.success(res.message);
         getAvailableSeats(globalData.pasaje.vehiculoPasaje).then(asientos => {
           const asientosFilter = asientos.asientos.filter(asiento => asiento === 0);
@@ -118,7 +118,7 @@ const RegisterPayment = ({ history }) => {
               sucursalActual: globalData.destino,
               sucursalFinal: globalData.origen
             }).then(update => {
-              if (update.statusCode == 200) {
+              if (update.statusCode === 200) {
                 getPassagesByIdVehicule(globalData.pasaje.vehiculoPasaje).then(res => {
                   if (res)
                     res.map(passage => {
